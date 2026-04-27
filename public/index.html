@@ -12,24 +12,43 @@
       color: #fff; min-height: 100vh; display: flex; align-items: center; justify-content: center;
     }
     .container { text-align: center; padding: 2rem; }
-    h1 { font-size: 3rem; margin-bottom: 1rem; }
+    h1 { font-size: 3rem; margin-bottom: 0.5rem; }
+    .clock { font-size: 1.8rem; font-variant-numeric: tabular-nums; margin: 1rem 0; color: #a78bfa; }
+    .cards { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; justify-content: center; }
+    .card {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px; padding: 1.5rem; width: 200px; text-align: center;
+    }
+    .card .icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .card h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+    .card p { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
     .badge { 
       display: inline-block; padding: 0.5rem 1.5rem; border-radius: 999px;
       background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-      font-size: 0.9rem; margin-top: 1rem;
+      font-size: 0.9rem; margin-top: 2rem;
     }
-    p { color: rgba(255,255,255,0.7); font-size: 1.2rem; margin-top: 0.5rem; }
-    .pulse { animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+    p.sub { color: rgba(255,255,255,0.7); font-size: 1.1rem; margin-top: 0.5rem; }
+    .v2 { color: #a78bfa; font-size: 0.9rem; margin-top: 0.5rem; }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="pulse">🤖</div>
     <h1>Hello from the Agent</h1>
-    <p>This app was created, pushed to GitHub, and deployed to Vercel</p>
-    <p>entirely by an AI agent — no local dev environment needed.</p>
+    <div class="clock" id="clock"></div>
+    <p class="sub">Created, pushed & deployed entirely by an AI agent.</p>
+    <div class="cards">
+      <div class="card"><div class="icon">📦</div><h3>GitHub API</h3><p>Code pushed without git</p></div>
+      <div class="card"><div class="icon">🚀</div><h3>Vercel API</h3><p>Auto-deployed on push</p></div>
+      <div class="card"><div class="icon">🔄</div><h3>Hot Update</h3><p>Single file changed remotely</p></div>
+    </div>
     <div class="badge">Built with Modassembly</div>
+    <p class="v2">v2 — updated without downloading the codebase</p>
   </div>
+  <script>
+    function tick() {
+      document.getElementById("clock").textContent = new Date().toLocaleTimeString();
+    }
+    tick(); setInterval(tick, 1000);
+  </script>
 </body>
 </html>
